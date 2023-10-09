@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}
+About Us
+{% endblock %}
+{% block content %}
+
+<img style="margin-left: 2px; margin-right: 2px;" src="/static/residential_banner.jpg" class="d-block w-100" alt="...">
+{% if session['loggedin'] %}
+<div style="margin-left: 20px; margin-top: 50px; margin-right: 20px;">
+	<span style="font-size: 20px; color: beige;" id="location">Click the button to get your location.</span>
+	<button style="margin-bottom: 20px;" id="getLocation" class="btn btn-success">Get Location</button><br>
+	<div id="map" style="width: 50%; height: 300px;"></div>
+</div>
+
+<div class="residential" style="margin-left: 10px; margin-top: 50px; margin-right: 10px;">
+	<form>
+		<div class="row mb-3">
+			<label for="phone" class="col-sm-2 col-form-label">Phone</label>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" id="phone">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="address" class="col-sm-2 col-form-label">Address</label>
+			<div class="col-sm-5">
+				<textarea style="background-color:black; color:beige; height: 200px;" class="form-control"
+					placeholder="Leave a comment here" id="address"></textarea>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="area" class="col-sm-2 col-form-label">Approx Roof Area<br>(in sq. feet)</label>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" id="area">
+			</div>
+		</div>
+		<br>
+		<div class="row mb-3">
+			<label for="address" class="col-sm-2 col-form-label">Note</label>
+			<div class="col-sm-5">
+				<span style="color:beige; font-size: larger;">A $20 visit & inspection fee needs to be paid.
+					In case SolarAura isn't able to reach out to you, the refund will be made to the original account
+					within 2 weeks.
+					Further budget will be discussed on visit.
+				</span>
+			</div>
+		</div>
+	</form>
+	<br>
+	<button id="buy_now_btn" class="btn btn-primary btn-lg">Proceed</button>
+
+		<script src="https://js.stripe.com/v3/"></script>
+		{#
+		<script>
+			const checkout_public_key = '{{checkout_public_key}}';
+			const checkout_session_id = '{{checkout_session_id}}';
+		</script>
+		#}
+		<script src="{{ url_for('static', filename='script-ajax.js') }}"></script>
+
+
+		<script>
+			document.getElementById('getLocation').addEventListener('click', function () {
+				if ("geolocation" in navigator) {
+					navigator.geolocation.getCurrentPosition(function (position) {
+						var latitude = position.coords.latitude;
+						var longitude = position.coords.longitude;
+						fetch('/get_location', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({ latitude: latitude, longitude: longitude })
+						})
+							.then(response => response.json())
+							.then(data => {
+								document.getElementById('location').innerText = "Your location is: " + data.location;
+
+								var map = L.map('map').setView([latitude, longitude], 13);
+								L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+									maxZoom: 19,
+								}).addTo(map);
+
+								// Add a marker with a popup
+								var marker = L.marker([latitude, longitude]).addTo(map);
+								marker.bindPopup("You are here!").openPopup();
+							})
+							.catch(error => {
+								console.error('Error:', error);
+							});
+					});
+				} else {
+					document.getElementById('location').innerText = "Geolocation is not supported by your browser.";
+				}
+			});
+		</script>
+</div>
+
+{% else %}
+
+<marquee scrollamount="20">
+<h1 style="color:beige">Please Login to Proceed Further!!</h1>
+</marquee>
+
+{% endif %}
+
+{% endblock %}
