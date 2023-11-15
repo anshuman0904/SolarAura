@@ -153,7 +153,7 @@ In addition to the core functionalities, the SolarAura application includes othe
 - Displays contact information for users to get in touch.
 
 
-### 12. **Conclusion:**
+## Conclusion:
 
 ```markdown
 # Conclusion
