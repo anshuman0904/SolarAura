@@ -1,0 +1,611 @@
+{% extends 'base.html' %}
+{% block title %}
+SolarAura
+{% endblock %}
+{% block content %}
+
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+	@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+	body {
+		background-color: black;
+	}
+
+	#box1 {
+		display: flex;
+		background-color: black;
+		color: white;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
+	#box11 {
+		width: 50%;
+		font-size: 25px;
+		padding: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#box12 {
+		width: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#img1 {
+		width: 80%;
+		border-radius: 20px;
+	}
+
+	#box2 {
+		height: 550px;
+		display: flex;
+		color: black;
+		margin-bottom: 50px;
+	}
+
+	#box21 {
+		width: 35%;
+		font-size: 25px;
+		padding: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #FFFBF0;
+	}
+
+	#box22 {
+		width: 65%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: linear-gradient(to right, #FFFBF0 50%, black 50%);
+	}
+
+	#img2 {
+		width: 80%;
+	}
+
+	#box3 {
+		display: flex;
+		color: black;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
+	#box31 {
+		width: 40%;
+		font-size: 25px;
+		padding: 30px;
+
+		justify-content: center;
+		align-items: center;
+		background-color: #FFFBF0;
+	}
+
+	#box32 {
+		width: 60%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#img3 {
+		width: 100%;
+	}
+
+
+	@media (max-width:500px) {
+		#outsideGoodStuff {
+			display: none;
+		}
+	}
+
+	#solarjourneydiv {
+		display: flex;
+	}
+
+	@media (max-width:900px) {
+		#solarjourneydiv {
+			flex-direction: column;
+		}
+	}
+
+	@media (max-width:900px) {
+		#box1 {
+			flex-direction: column;
+		}
+
+		#box11,
+		#box12 {
+			width: 100%;
+		}
+
+		#img1 {
+			width: 60%;
+		}
+
+		#box2 {
+			flex-direction: column;
+		}
+
+		#box21 {
+			width: 100%;
+			background-color: black;
+			color: beige;
+		}
+
+		#box22 {
+			width: 100%;
+			background: none;
+		}
+
+		#img2 {
+			width: 60%;
+		}
+
+		#box3 {
+			flex-direction: column;
+		}
+
+		#box31,
+		#box32 {
+			width: 100%;
+		}
+
+		#img3 {
+			width: 80%;
+		}
+	}
+
+	#testimonial {
+		display: flex;
+		text-align: center;
+		justify-content: center;
+		width: 100%;
+	}
+
+	figure.snip1390 {
+		font-family: 'Roboto', Arial, sans-serif;
+		position: relative;
+		overflow: hidden;
+		margin: 10px;
+		min-width: 230px;
+		max-width: 315px;
+		width: 100%;
+		color: #000000;
+		text-align: center;
+		font-size: 16px;
+		background-color: #2C3447;
+		padding: 30px;
+		background-image: linear-gradient(-25deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border-radius: 20px;
+	}
+
+	figure.snip1390 *,
+	figure.snip1390 *:before,
+	figure.snip1390 *:after {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-transition: all 0.35s ease;
+		transition: all 0.35s ease;
+	}
+
+	figure.snip1390 figcaption {
+		width: 100%;
+	}
+
+	figure.snip1390 h2,
+	figure.snip1390 h4,
+	figure.snip1390 blockquote {
+		margin: 0;
+	}
+
+	figure.snip1390 h2,
+	figure.snip1390 h4 {
+		font-weight: 300;
+	}
+
+	figure.snip1390 h2 {
+		color: #ffffff;
+	}
+
+	figure.snip1390 h4 {
+		color: #a6a6a6;
+	}
+
+	figure.snip1390 blockquote {
+		font-size: 1em;
+		padding: 45px 20px 40px 50px;
+		margin-top: 30px;
+		background-color: #ffffff;
+		border-radius: 5px;
+		box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+		text-align: left;
+		position: relative;
+	}
+
+	figure.snip1390 blockquote:before {
+		font-family: 'FontAwesome';
+		content: "\201C";
+		position: absolute;
+		font-size: 70px;
+		opacity: 0.25;
+		font-style: normal;
+		top: 0px;
+		left: 20px;
+	}
+
+	figure.snip1390 .profile {
+		width: 100px;
+		border-radius: 50%;
+		display: inline-block;
+		box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+		margin-bottom: 10px;
+		border: solid 5px #A6A57A;
+	}
+
+	@media (max-width:1100px) {
+		#testimonial {
+			flex-direction: column;
+		}
+
+		figure.snip1390 {
+			max-width: 100%;
+			width: 80%;
+		}
+	}
+</style>
+<style>
+	#try1 {
+		font-size: 20px;
+		color: white;
+		display: none;
+	}
+
+	#try2:hover #try1 {
+		display: block;
+	}
+</style>
+<style data-jss="" data-meta="MuiSection">
+	.MuiSection-grayLine {
+		border-bottom: 0.0625rem solid #D2D2D2;
+	}
+</style>
+<style data-jss="" data-meta="MuiSunrunHomepageSolarBenefits">
+	.MuiSunrunHomepageSolarBenefits-solarBenefitsSection {
+		display: flex;
+		align-items: center;
+		padding-top: 5.625rem;
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
+		flex-direction: column;
+		padding-bottom: 10rem;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.MuiSunrunHomepageSolarBenefits-contentContainer {
+		display: flex;
+		max-width: 100%;
+		flex-direction: column;
+	}
+
+	.MuiSunrunHomepageSolarBenefits-title {
+		font-size: 4rem;
+		font-weight: 500;
+		line-height: 4.5rem;
+		margin-bottom: 2.1875rem;
+		letter-spacing: -0.08rem;
+	}
+
+	.MuiSunrunHomepageSolarBenefits-titleLarge {
+		font-size: 4rem;
+		font-weight: 500;
+		line-height: 4.5rem;
+		margin-bottom: 5.3125rem;
+		letter-spacing: -0.08rem;
+	}
+
+	.MuiSunrunHomepageSolarBenefits-rectangleRow {
+		display: flex;
+	}
+
+	/* @media (max-width:500px) {
+		.MuiSunrunHomepageSolarBenefits-rectangleRow{
+			flex-direction: column;
+		}
+	} */
+</style>
+<style data-jss="" data-meta="MuiImageOverlayCard">
+	.MuiImageOverlayCard-container {
+		width: 28.125rem;
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+		height: 20rem;
+		display: flex;
+		overflow: hidden;
+		margin-right: 0.9375rem;
+		border-radius: 0.75rem;
+		/* margin-bottom: 5.625rem; */
+		flex-direction: column;
+		background-size: cover;
+		justify-content: flex-end;
+		overflow-anchor: none;
+		background-color: #D2D2D2;
+	}
+
+	.MuiImageOverlayCard-container:last-child {
+		margin-right: 0;
+	}
+
+	.MuiImageOverlayCard-largeContainer {
+		height: 37.625rem;
+	}
+
+	.MuiImageOverlayCard-title {
+		color: #FFFBF0;
+		font-size: 1.75rem;
+		font-weight: 400;
+		line-height: 2.25rem;
+		letter-spacing: -0.035rem;
+	}
+
+	.MuiImageOverlayCard-topTitle {
+		top: 1.25rem;
+		left: 1.25rem;
+		color: #FFFBF0;
+		position: absolute;
+		font-size: 1.75rem;
+		font-weight: 400;
+		line-height: 2.25rem;
+		padding-right: 1.25rem;
+		letter-spacing: -0.035rem;
+	}
+
+	.MuiImageOverlayCard-subtitle {
+		color: #FFFBF0;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 2rem;
+		letter-spacing: -0.03rem;
+	}
+
+	.MuiImageOverlayCard-detail {
+		color: #FFFBF0;
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+		font-weight: 400;
+		line-height: 1.5rem;
+		letter-spacing: -0.025rem;
+	}
+
+	.MuiImageOverlayCard-cta {
+		color: #FFFBF0;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+		font-weight: 400;
+		line-height: 1.5rem;
+		letter-spacing: -0.025rem;
+		text-decoration: underline;
+	}
+
+	.MuiImageOverlayCard-textContainer {
+		background: linear-gradient(0.64deg, rgba(47, 47, 47, 0.8) 2.16%, rgba(53, 53, 53, 0) 99.47%);
+		padding-top: 3.75rem;
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+		padding-bottom: 1.25rem;
+	}
+</style>
+
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="/static/1carousel1.jpg" class="d-block w-100" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img src="/static/tesla1.jpg" class="d-block w-100" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img src="/static/2carousel.jpg" class="d-block w-100" alt="...">
+		</div>
+
+		<div class="carousel-item">
+			<img src="/static/3carousel.jpg" class="d-block w-100" alt="...">
+		</div>
+
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+		data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+		data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
+</div>
+
+<section id="outsideGoodStuff" class="MuiSection-grayLine MuiSection-LightBlueFractal">
+	<div
+		class="MuiSunrunHomepageSolarBenefits-solarBenefitsSection MuiSunrunHomepageSolarBenefits-offWhiteBackground MuiSunrunHomepageSolarBenefits-solarBenefitsSection">
+		<div class="MuiSunrunHomepageSolarBenefits-contentContainer">
+			<div class="MuiSunrunHomepageSolarBenefits-rectangleRow">
+				<div id="try2" class="MuiImageOverlayCard-container"
+					style="background: url(&quot;https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoic3VucnVuXC9maWxlXC9FN1ZDa2liVlltZERiQUZBR2NXMy5qcGcifQ:sunrun:YxevJp-FQEw7OZeGCCt6GTlR5lWMotPIG12NWyQnwzg?width=1440&amp;format=webp&quot;) center center / cover; --darkreader-inline-bgcolor: initial;"
+					data-darkreader-inline-bgcolor="">
+					<div class="MuiImageOverlayCard-textContainer">
+						<h3 class="MuiImageOverlayCard-title">Get Future Ready</h3>
+						<h4 id="try1">From powering electric vehicles to working from home, our future is electric.</h4>
+					</div>
+				</div>
+				<div id="try2" class="MuiImageOverlayCard-container"
+					style="background: url(&quot;https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoic3VucnVuXC9maWxlXC93eVlyNlZOdTF2Nkp6TlFRSnhlQS5qcGcifQ:sunrun:zQvpwQOwm2PsDO5jShCI2zzUS8xNwCNxUgabSPayLwA?width=1440&amp;format=webp&quot;) center center / cover; --darkreader-inline-bgcolor: initial;"
+					data-darkreader-inline-bgcolor="">
+					<div class="MuiImageOverlayCard-textContainer">
+						<h3 class="MuiImageOverlayCard-title">Say No To Blackouts</h3>
+						<h3 id="try1">Power outages are increasing nationwide. With battery backup, you can stay plugged
+							in.</h4>
+					</div>
+				</div>
+				<div id="try2" class="MuiImageOverlayCard-container"
+					style="background: url(&quot;https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoic3VucnVuXC9maWxlXC9nQWNxUHlyRzl2WjF0V28yTUdZcC5qcGcifQ:sunrun:Yh2eaEvAuq3dGKy9dya-Zf7A_oPV0brlMuL6ED8mqlk?width=1440&amp;format=webp&quot;) center center / cover; --darkreader-inline-bgcolor: initial;"
+					data-darkreader-inline-bgcolor="">
+					<div class="MuiImageOverlayCard-textContainer">
+						<h3 class="MuiImageOverlayCard-title">Save More</h3>
+						<h4 id="try1">Tell utility price hikes to take a hike. Lock in a simple, predictable rate that
+							serves your needs.</h4>
+					</div>
+				</div>
+			</div>
+			<div class="MuiSunrunHomepageSolarBenefits-rectangleRow">
+				<div id="try2" class="MuiImageOverlayCard-container"
+					style="background: url(&quot;https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoic3VucnVuXC9maWxlXC9XNENoYWFWbm1UalJSdEVyeHZNRy5qcGcifQ:sunrun:DEhZTNnYyaVs1F0s09Wty62bOxeuefkPYvpSuOLhEEE?width=1440&amp;format=webp&quot;) center center / cover; --darkreader-inline-bgcolor: initial;"
+					data-darkreader-inline-bgcolor="">
+					<div class="MuiImageOverlayCard-textContainer">
+						<h3 class="MuiImageOverlayCard-title">Preserve Our Home</h3>
+						<h4 id="try1">Take the source of life, use it to power your own, and see your world flourish.
+						</h4>
+					</div>
+				</div>
+				<div id="try2" class="MuiImageOverlayCard-container"
+					style="background: url(&quot;https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoic3VucnVuXC9maWxlXC9SMnZvUnJYUHRFelNOaUdMOG9uMi5qcGcifQ:sunrun:_dnhjgMZzCnDENrLLt-0X69a-jMP821jq84Y2qQMErQ?width=1440&amp;format=webp&quot;) center center / cover; --darkreader-inline-bgcolor: initial;"
+					data-darkreader-inline-bgcolor="">
+					<div class="MuiImageOverlayCard-textContainer">
+						<h3 class="MuiImageOverlayCard-title">Boost Your Home Value</h3>
+						<h4 id="try1">A future-ready home can be more appealing, to more buyers.</h4>
+					</div>
+				</div>
+				<div id="try2" class="MuiImageOverlayCard-container"
+					style="background: url(&quot;https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoic3VucnVuXC9maWxlXC9EcDlTbkV0N2lOYjdXNjI1SnFiZC5qcGcifQ:sunrun:DUsBWODcGe_ku9Kc2s72jK5JuEVC3CHyC3NIUhBI5WE?width=1440&amp;format=webp&quot;) center center / cover; --darkreader-inline-bgcolor: initial;"
+					data-darkreader-inline-bgcolor="">
+					<div class="MuiImageOverlayCard-textContainer">
+						<h3 class="MuiImageOverlayCard-title">Control Your Energy</h3>
+						<h4 id="try1">Most of us can't choose which utility provider to use. Take power back by
+							generating your own.</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div id="box2">
+	<div id="box21">
+		Our advanced monitoring systems allow you to track your energy production and savings in real time. You'll have
+		complete visibility into your solar system's performance, giving you peace of mind and control over your energy
+		consumption.
+	</div>
+	<div id="box22">
+		<img id="img2" src="/static/cost_details.webp">
+	</div>
+</div>
+
+<div id="box1">
+	<div id="box11">
+		We keep you informed about available government incentives and tax credits that can significantly reduce the
+		upfront cost of your solar installation, making it even more cost-effective.
+	</div>
+	<div id="box12">
+		<img id="img1" src="/static/tax.jpg">
+	</div>
+</div>
+
+<div id="box1">
+	<div id="box12">
+		<img id="img1" src="/static/cost_details2.webp">
+	</div>
+	<div id="box11">
+		We assist you in selecting the ideal location for solar panel installation. Finding the right
+		spot ensures maximum energy efficiency and cost savings.
+	</div>
+</div>
+
+<div id="testimonial">
+	<center>
+		<figure class="snip1390">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg" alt="profile-sample3"
+				class="profile" />
+			<figcaption>
+				<h2>Eleanor Crisp</h2>
+				<h4>CEO, Wallbox</h4>
+				<blockquote>Just had a fantastic experience with #SolarAura, the game-changers in
+					solar installation. From start to finish, they made going green a breeze! 🌱🔌 Stellar customer
+					service, top-notch panels, and eco-friendly solutions. Highly recommend!</blockquote>
+			</figcaption>
+		</figure>
+	</center>
+	<center>
+		<figure class="snip1390 hover"><img
+				src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg" alt="profile-sample5"
+				class="profile" />
+			<figcaption>
+				<h2>Gordon Norman</h2>
+				<h4>PR, Waterfleet</h4>
+				<blockquote>Just had #SolarAura install solar panels on factory roof, and we're over the moon! Their
+					expertise and commitment to clean energy are unmatched. Thanks, SolarAura, for lighting up our
+					life
+					with sunshine and sustainability!
+				</blockquote>
+			</figcaption>
+		</figure>
+	</center>
+	<center>
+		<figure class="snip1390"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg"
+				alt="profile-sample6" class="profile" />
+			<figcaption>
+				<h2>Sue Shei</h2>
+				<h4>Yankee</h4>
+				<blockquote>SolarAura's rooftop solar panels have transformed our neighborhood, cutting costs and
+					our carbon footprint. Their dedication to a greener future sets an inspiring example. Kudos to
+					SolarAura for their sustainable energy initiative!<br><br>
+				</blockquote>
+			</figcaption>
+		</figure>
+	</center>
+</div>
+
+<div id="box3">
+	<div id="box31">
+		<h1 style="font-size: 4rem;
+		font-weight: 500;
+		line-height: 4.5rem;
+		margin-bottom: 1.25rem;
+		letter-spacing: -0.08rem;">
+			Start your Solar<br>
+			Journey Today
+		</h1>
+		<center>
+			<div id="solarjourneydiv">
+				<div style="margin: 20px;"><a style=" font-size: 30px; text-decoration: none; /* Remove underline */
+					color: inherit; /* Inherit the color from the parent element (usually black for normal text) */
+					background: none; /* Remove any background color */
+					border: none; /* Remove any border */
+					padding: 0; /* Remove any padding */
+					margin: 0; /* Remove any margin */" href="{{ url_for('residential') }}">Residential</a></div>
+				<div style="margin: 20px;"><a style="font-size: 30px; text-decoration: none; /* Remove underline */
+					color: inherit; /* Inherit the color from the parent element (usually black for normal text) */
+					background: none; /* Remove any background color */
+					border: none; /* Remove any border */
+					padding: 0; /* Remove any padding */
+					margin: 0; /* Remove any margin */" href="{{ url_for('commercial') }}">Commercial</a></div>
+			</div>
+		</center>
+	</div>
+	<div id="box32">
+		<img id="img3" src="/static/solarjourney.webp">
+	</div>
+</div>
+
+
+{% endblock %}
