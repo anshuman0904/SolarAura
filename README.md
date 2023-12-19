@@ -1,4 +1,5 @@
 # SolarAura Web Application Documentation
+## Hosted at https://anshumansinha.pythonanywhere.com/
 
 Welcome to the documentation for the SolarAura web application. This Flask-based project serves as a platform for managing residential and commercial solar energy solutions. The application includes features such as user authentication, registration, and forms for capturing information about both residential and commercial clients. Additionally, it integrates with Stripe for payment processing.
 
